@@ -1,5 +1,5 @@
 import React from "react";
-import ThoughtList from "../components/ThoughtList";
+import ThoughtList from "../components/Thoughtlist";
 
 import { useQuery } from "@apollo/client";
 import { QUERY_THOUGHTS } from "../utils/queries";
