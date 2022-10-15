@@ -1,5 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import AuthService from "../../utils/auth";
+
+const logout = (event) => {
+  event.preventDefault();
+  AuthService.logout();
+};
 
 const Header = () => {
   return (
@@ -10,8 +16,19 @@ const Header = () => {
         </Link>
 
         <nav className="text-center">
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Signup</Link>
+          {AuthService.loggedIn() ? (
+            <>
+              <Link to="/profile">Me</Link>
+              <a href="/" onClick={logout}>
+                Logout
+              </a>
+            </>
+          ) : (
+            <>
+              <Link to="/login">Login</Link>
+              <Link to="/signup">Signup</Link>
+            </>
+          )}
         </nav>
       </div>
     </header>
